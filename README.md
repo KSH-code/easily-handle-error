@@ -10,12 +10,12 @@ npm install --save easily-handle-error
 const express = require('express')
 const ehe = require('ehe')
 const app = ehe(express())
-
+// Function
 app.get('/error1', async (req, res) => {
   await timer()
   throw new Error('error')
 })
-
+// Function
 app.get('/error2', async (req, res, next) => {
   await timer()
   next()
@@ -23,6 +23,14 @@ app.get('/error2', async (req, res, next) => {
   await timer()
   throw new Error('error')
 })
+// Array
+app.get('/error3', [async (req, res, next) => {
+  await timer()
+  next()
+}, async (req, res) => {
+  await timer()
+  throw new Error('error')
+}])
 
 app.use((err, req, res, next) => {
   if (err) res.status(500).end()

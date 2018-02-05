@@ -28,6 +28,13 @@ describe('Start', () => {
       await timer()
       throw new Error('error')
     })
+    app.get('/error3', [async (req, res, next) => {
+      await timer()
+      next()
+    }, async (req, res) => {
+      await timer()
+      throw new Error('error')
+    }])
     app.use((err, req, res, next) => {
       if (err) res.status(500).end()
     })
@@ -50,6 +57,13 @@ describe('Start', () => {
   })
   it('test error2', done => {
     request.get('http://127.0.0.1:7001/error2', (err, res, body) => {
+      if (err) return done(err)
+      checkEqual(500, res.statusCode)
+      done()
+    })
+  })
+  it('test error3', done => {
+    request.get('http://127.0.0.1:7001/error3', (err, res, body) => {
       if (err) return done(err)
       checkEqual(500, res.statusCode)
       done()
