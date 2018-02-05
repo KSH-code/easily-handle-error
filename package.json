@@ -1,0 +1,36 @@
+{
+  "name": "easily-handle-error",
+  "version": "1.0.0",
+  "description": "async function 을 사용한 에러 핸들이 가능합니다.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run standard && node ./node_modules/mocha/bin/mocha $(find ./test -name '*.js') --exit",
+    "standard": "standard \"./*.js\" \"test/*.js\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KSH-code/easily-handle-error.git"
+  },
+  "keywords": [
+    "async",
+    "await",
+    "express",
+    "error",
+    "middleware"
+  ],
+  "author": "KSH-Code <tjdgnsqn133@gmail.com> (github.com/ksh-code)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KSH-code/easily-handle-error/issues"
+  },
+  "homepage": "https://github.com/KSH-code/easily-handle-error#readme",
+  "devDependencies": {
+    "mocha": "^5.0.0",
+    "standard": "^10.0.3"
+  },
+  "dependencies": {
+    "easily-expect": "^1.0.0",
+    "express": "^4.16.2",
+    "request": "^2.83.0"
+  }
+}
